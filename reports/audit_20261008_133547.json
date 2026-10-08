@@ -1,0 +1,90 @@
+{
+    "metadata": {
+        "package": "org.fdroid.fdroid",
+        "target_sdk": "37",
+        "min_sdk": "24",
+        "total_permissions": 30,
+        "exported_components": 7
+    },
+    "threat_score": 37,
+    "findings_count": 11,
+    "findings": [
+        {
+            "rule_id": "MASVS-STORAGE-2",
+            "title": "ADB Backup Enabled",
+            "severity": "LOW",
+            "cwe": "CWE-200",
+            "description": "android:allowBackup is true, permitting full application data extraction via ADB."
+        },
+        {
+            "rule_id": "MASVS-NETWORK-1",
+            "title": "Cleartext HTTP Traffic Permitted",
+            "severity": "HIGH",
+            "cwe": "CWE-319",
+            "description": "android:usesCleartextTraffic is enabled, allowing unencrypted HTTP transmission."
+        },
+        {
+            "rule_id": "MASVS-PLATFORM-1",
+            "title": "Exported Activity: PanicActivity",
+            "severity": "MEDIUM",
+            "cwe": "CWE-926",
+            "description": "Activity is exposed to external application IPC triggers."
+        },
+        {
+            "rule_id": "MASVS-PLATFORM-1",
+            "title": "Exported Activity: PanicResponderActivity",
+            "severity": "MEDIUM",
+            "cwe": "CWE-926",
+            "description": "Activity is exposed to external application IPC triggers."
+        },
+        {
+            "rule_id": "MASVS-PLATFORM-1",
+            "title": "Exported Activity: MainActivity",
+            "severity": "MEDIUM",
+            "cwe": "CWE-926",
+            "description": "Activity is exposed to external application IPC triggers."
+        },
+        {
+            "rule_id": "MASVS-PLATFORM-1",
+            "title": "Exported Activity: UpdateRepoActivity",
+            "severity": "MEDIUM",
+            "cwe": "CWE-926",
+            "description": "Activity is exposed to external application IPC triggers."
+        },
+        {
+            "rule_id": "MASVS-PLATFORM-1",
+            "title": "Exported Service: SystemJobService",
+            "severity": "MEDIUM",
+            "cwe": "CWE-926",
+            "description": "Service is exposed to external application IPC triggers."
+        },
+        {
+            "rule_id": "MASVS-PLATFORM-1",
+            "title": "Exported Receiver: DiagnosticsReceiver",
+            "severity": "MEDIUM",
+            "cwe": "CWE-926",
+            "description": "Receiver is exposed to external application IPC triggers."
+        },
+        {
+            "rule_id": "MASVS-PLATFORM-1",
+            "title": "Exported Receiver: ProfileInstallReceiver",
+            "severity": "MEDIUM",
+            "cwe": "CWE-926",
+            "description": "Receiver is exposed to external application IPC triggers."
+        },
+        {
+            "rule_id": "MASVS-PLATFORM-2",
+            "title": "High-Privilege Permission: WRITE_EXTERNAL_STORAGE",
+            "severity": "MEDIUM",
+            "cwe": "CWE-276",
+            "description": "Grants shared public storage write access."
+        },
+        {
+            "rule_id": "MASVS-PLATFORM-2",
+            "title": "High-Privilege Permission: REQUEST_INSTALL_PACKAGES",
+            "severity": "HIGH",
+            "cwe": "CWE-276",
+            "description": "Allows silent or secondary APK installations."
+        }
+    ]
+}
