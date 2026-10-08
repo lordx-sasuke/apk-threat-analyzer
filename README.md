@@ -1,13 +1,19 @@
-# Android APK Security Analyzer & Threat Assessment Platform
+# APK Threat Intelligence & Malware Analysis Platform
 
-An automated static application security testing (SAST) tool designed for Android APKs, auditing entry points, component exposure, and secret leakage mapped to the OWASP MASVS standard.
+A modular static application security testing (SAST) framework designed to ingest raw Android APK binaries, extract compiled DEX bytecode, and identify hardcoded secrets, network IOCs, and insecure cryptographic implementations. 
 
-## Features
-- **Manifest Attack Surface Profiling:** Detects exposed Activities, Receivers, Services, and Providers (CWE-926).
-- **High-Risk Permission Auditing:** Analyzes high-privilege permissions including installer requests and storage access (CWE-276).
-- **Security Flag Validation:** Identifies debuggable builds, cleartext network traffic, and insecure backup policies.
-- **Automated Risk Scoring:** Calculates a deterministic threat score (0–100) and exports structured JSON/Markdown reports.
+## Architecture
+This tool abandons the monolithic script approach for a scalable, modular detection engine:
+*   `core/`: Handles raw APK ingestion, SHA-256 fingerprinting, and direct ZIP/DEX extraction.
+*   `detectors/`: Independent analysis modules for Cryptography, Network IOCs, and High-Confidence Secrets.
+*   `cli/`: Orchestrates the analysis pipeline and calculates a weighted CVSS-aligned risk severity score.
+
+## Capabilities
+*   **Direct Binary Analysis:** Parses compiled `classes.dex` strings without requiring external decompilers (e.g., JADX/Apktool).
+*   **IOC Extraction:** Pulls cleartext HTTP endpoints, Firebase URLs, and IP addresses embedded in bytecode.
+*   **Secret Detection:** Uses regex heuristics to identify exposed AWS keys, Google API tokens, and JWTs.
+*   **Risk Correlation:** Outputs a definitive risk posture rather than arbitrary point deductions.
 
 ## Usage
-```bash
-python3 apk_analyzer.py /path/to/decompiled_apk_or_folder
+`python3 cli/main.py target.apk`
+
